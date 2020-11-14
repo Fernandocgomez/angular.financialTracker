@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "financial-tracker-front-end"
+    }
+  },
+  "defaultProject": "financial-tracker-front-end",
+  "cli": {
+    "analytics": "90264862-6708-445c-b725-f6ed5d1881b0"
+  }
 }

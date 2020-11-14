@@ -1,0 +1,28 @@
+$primary: #283E70;
+$secondary: #437597;
+$link_color_primary: #fff;
+$link_color_secondary: #EED9B9;
+
+nav {
+    -webkit-box-shadow: 0px 5px 10px 0px #565656; 
+    box-shadow: 0px 5px 10px 0px #565656;
+    background-color: $primary !important;
+
+    a {
+        color:  $link_color_primary !important;
+
+        &:hover {
+            color: $link_color_secondary !important;
+        }
+    }
+
+    button {
+        border-color: $link_color_primary;
+        outline: none;
+    }
+
+    .dropdown-menu {
+        background-color: $primary;
+        border: none;
+    }
+}

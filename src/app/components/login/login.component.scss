@@ -1,0 +1,14 @@
+$primary: #283E70;
+$secondary: #437597;
+$hoverBtn: #67b6eb;
+$link_color_primary: #fff;
+$link_color_secondary: #EED9B9;
+
+button {
+    background-color:$secondary;
+    border: none;
+
+    &:hover {
+        background-color: $hoverBtn;
+    }
+}
