@@ -1,7 +1,8 @@
+import { AuthGuard } from './route-guard/auth.guard';
 // Anuglar modules
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// Components 
+// Components
 import { DadComponent } from './components/dad/dad.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DebtComponent } from './components/debt/debt.component';
@@ -14,20 +15,20 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
-  {path: "", component: SignupComponent, data: { animation: "isRight" }},
-  {path: "login", component: LoginComponent, data: { animation: "isLeft" }},
-  {path: "dashboard", component: DashboardComponent},
-  {path: "dad", component: DadComponent}, 
-  {path: "saving", component: SavingComponent},
-  {path: "expenses", component: ExpensesComponent},
-  {path: "debt", component: DebtComponent}, 
-  {path: "fun", component: FunComponent},
-  {path: "kill-debt", component: KillDebtComponent},
-  {path: "shopping", component: ShoppingComponent}
+  { path: '', component: SignupComponent, data: { animation: 'isRight' } },
+  { path: 'login', component: LoginComponent, data: { animation: 'isLeft' } },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dad', component: DadComponent, canActivate: [AuthGuard] },
+  { path: 'saving', component: SavingComponent, canActivate: [AuthGuard] },
+  { path: 'expenses', component: ExpensesComponent, canActivate: [AuthGuard] },
+  { path: 'debt', component: DebtComponent, canActivate: [AuthGuard] },
+  { path: 'fun', component: FunComponent, canActivate: [AuthGuard] },
+  { path: 'kill-debt', component: KillDebtComponent, canActivate: [AuthGuard] },
+  { path: 'shopping', component: ShoppingComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
