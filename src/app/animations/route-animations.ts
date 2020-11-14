@@ -9,7 +9,8 @@ import {
   keyframes,
 } from '@angular/animations';
 
-export const fader = trigger("routeAnimations", [
+// cretae an animation where the component fade into to the page
+export const fader = trigger("routeAnimation", [
     transition("* <=> *", [
         query(":enter, :leave", [
             style({
@@ -31,10 +32,37 @@ export const fader = trigger("routeAnimations", [
     ]),
 ])
 
-export const slider = trigger("routeAnimations", [
-    transition("* => isLeft", slideTo("left"))
+// Create an animation where the component slide right or left on the page based on 
+// the data passed on the routing module
+// {path: "login", component: LoginComponent, data: { animation: "isLeft" }}
+export const slider = trigger("routeAnimation", [
+    transition("* => isLeft", slideTo("left")),
+    transition("* => isRight", slideTo("right")),
+    transition("isRight => *", slideTo("left")),
+    transition("isLeft => *", slideTo("right")),
 ])
 
 function slideTo(direction) {
-    return [];
+    const optional = { optional: true };
+    return [
+        query(":enter, :leave", [
+            style({
+                position: "absolute",
+                top: 0,
+                [direction]: 0, 
+                width: "100%"
+            })
+        ], optional),
+        query(":enter", [
+            style({[direction]: "-100%"})
+        ]),
+        group([
+            query(":leave", [
+                animate("600ms ease", style({ [direction]: "100%" }))
+            ], optional),
+            query(":enter", [
+                animate("600ms ease", style({ [direction]: "0%" }))
+            ]),
+        ]),
+    ];
 }
