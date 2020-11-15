@@ -6,27 +6,19 @@ import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 // Interfaces
 import { SignUp } from './../../interfaces/user';
+// Helpers
+import { UserHelper } from 'src/app/helper/user.helper';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent implements OnInit {
-  
-  // Holds the input data
-  public email: string;
-  public password: string;
-  
-  // Validates the user input 
-  public isEmailValid: boolean = false;
-  public isPasswordValid: boolean = false;
+export class SignupComponent extends UserHelper implements OnInit {
 
-  // Error messages handeling
-  public showErrorMessage: boolean = false;
-  public errorMessage: string = '';
-
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(public userService: UserService, public router: Router) {
+    super(userService, router);
+  }
 
   ngOnInit(): void {}
 
@@ -51,34 +43,6 @@ export class SignupComponent implements OnInit {
           this.showErrorMessage = true;
         }
       );
-    }
-  }
-
-  /**
-   * using a regular expersion it validates if the user emial is valid
-   * @param {emial: string}
-   * @return {void}
-   */
-  public validateEmail(email: string): void {
-    const regEx: RegExp = /\S+@\S+\.\S+/;
-    if (regEx.test(email)) {
-      this.isEmailValid = true;
-    } else {
-      this.isEmailValid = false;
-    }
-  }
-
-  /**
-   * using a regular expersion it validates if the user password is valid
-   * @param {password: string}
-   * @return {void}
-   */
-  public validatePassword(password: string): void {
-    const regEx: RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/;
-    if (regEx.test(password)) {
-      this.isPasswordValid = true;
-    } else {
-      this.isPasswordValid = false;
     }
   }
 }
