@@ -1,5 +1,4 @@
-import { AuthGuard } from './route-guard/auth.guard';
-// Anuglar modules
+// Anuglar Modules
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // Components
@@ -13,6 +12,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SavingComponent } from './components/saving/saving.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SignupComponent } from './components/signup/signup.component';
+// Route Guard 
+import { AuthGuard } from './route-guard/auth.guard';
+// Route Resolvers
 
 const routes: Routes = [
   { path: '', component: SignupComponent, data: { animation: 'isRight' } },

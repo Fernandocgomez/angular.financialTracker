@@ -1,11 +1,14 @@
-import { Observable, Subject } from 'rxjs';
-import { ValidToken } from './../interfaces/user';
+// Angular Modules
 import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+// Rxjs Modules
+import { Observable, Subject } from 'rxjs';
+// Interfaces
+import { ValidToken } from './../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +18,10 @@ export class AuthService {
 
   private baseURL: string = 'http://localhost:4545/';
 
+  /**
+ * check with the server if the token provided is valid
+ * @return {Observable<boolean>}
+ */
   public isAuth(): Observable<boolean> {
     let subject: Subject<boolean> = new Subject<boolean>();
     if (this.tokenExist()) {
@@ -37,11 +44,19 @@ export class AuthService {
     }
   }
 
+  /**
+ * check if a token exist on the user localStorage
+ * @return {boolean}
+ */
   private tokenExist(): boolean {
     return !!localStorage.getItem('token');
   }
 
-  private validateToken() {
+  /**
+ * make a post request to the server to validate the token
+ * @return {Observable<ValidToken>}
+ */
+  private validateToken(): Observable<ValidToken> {
     const headersConfig: any = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
