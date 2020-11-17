@@ -1,5 +1,7 @@
+import { TransactionEffects } from './store/effects/transaction.effects';
+import { EffectsModule } from '@ngrx/effects';
 // Angular Modules
-import { AuthGuard } from './route-guard/auth.guard';
+import { AuthGuard } from './route-guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +21,8 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavComponent } from './components/nav/nav.component';
+import { StoreModule } from '@ngrx/store';
+import { TransactionReducer } from './store/reducers/transaction.reducer';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,12 @@ import { NavComponent } from './components/nav/nav.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({
+      transaction: TransactionReducer
+    }, {}),
+    EffectsModule.forRoot([TransactionEffects]),
+    FormsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

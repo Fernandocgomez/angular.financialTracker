@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 // Rxjs Modules
 import { Observable, Subject } from 'rxjs';
 // Interfaces
-import { ValidToken } from './../interfaces/user';
+import { ValidToken } from '../interfaces/user.model';
 
 @Injectable({
   providedIn: 'root',

@@ -13,7 +13,7 @@ import { SavingComponent } from './components/saving/saving.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SignupComponent } from './components/signup/signup.component';
 // Route Guard 
-import { AuthGuard } from './route-guard/auth.guard';
+import { AuthGuard } from './route-guards/auth.guard';
 // Route Resolvers
 
 const routes: Routes = [

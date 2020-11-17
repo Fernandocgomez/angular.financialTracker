@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 // Interfaces
-import { Login } from './../../interfaces/user';
+import { Login } from '../../interfaces/user.model';
 // Services
 import { UserService } from './../../services/user.service';
 // Helpers
-import { UserHelper } from 'src/app/helper/user.helper';
+import { UserHelper } from 'src/app/helpers/user.helper';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +33,7 @@ export class LoginComponent extends UserHelper implements OnInit{
       this.userService.login(this.email, this.password).subscribe(
         (user: Login) => {
           localStorage.setItem('token', user.token);
+          localStorage.setItem('userId', user.userId);
           this.showErrorMessage = false;
           this.router.navigate(['/dashboard']);
         },

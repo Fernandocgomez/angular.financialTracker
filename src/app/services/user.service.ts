@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 // Rxjs Modules
 import { Observable } from 'rxjs';
 // Interfaces
-import { Login } from './../interfaces/user';
-import { SignUp } from '../interfaces/user';
+import { Login } from '../interfaces/user.model';
+import { SignUp } from '../interfaces/user.model';
 
 @Injectable({
   providedIn: 'root'

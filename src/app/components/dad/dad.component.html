@@ -1,1 +1,6 @@
 <p>dad works!</p>
+
+
+<li *ngFor="let transaction of transactions$ | async">
+    {{ transaction.name }}
+</li>

@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 // Services
 import { UserService } from './../../services/user.service';
 // Interfaces
-import { SignUp } from './../../interfaces/user';
+import { SignUp } from '../../interfaces/user.model';
 // Helpers
-import { UserHelper } from 'src/app/helper/user.helper';
+import { UserHelper } from 'src/app/helpers/user.helper';
 
 @Component({
   selector: 'app-signup',
